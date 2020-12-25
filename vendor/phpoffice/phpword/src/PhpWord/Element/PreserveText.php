@@ -47,6 +47,7 @@ class PreserveText extends AbstractElement
      */
     private $paragraphStyle;
 
+
     /**
      * Create a new Preserve Text Element
      *

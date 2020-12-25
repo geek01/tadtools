@@ -98,7 +98,6 @@ abstract class AbstractHydrator implements
     public function addStrategy($name, StrategyInterface $strategy)
     {
         $this->strategies[$name] = $strategy;
-
         return $this;
     }
 
@@ -111,7 +110,6 @@ abstract class AbstractHydrator implements
     public function removeStrategy($name)
     {
         unset($this->strategies[$name]);
-
         return $this;
     }
 
@@ -129,7 +127,6 @@ abstract class AbstractHydrator implements
             $strategy = $this->getStrategy($name);
             $value = $strategy->extract($value, $object);
         }
-
         return $value;
     }
 
@@ -147,7 +144,6 @@ abstract class AbstractHydrator implements
             $strategy = $this->getStrategy($name);
             $value = $strategy->hydrate($value, $data);
         }
-
         return $value;
     }
 
@@ -163,7 +159,6 @@ abstract class AbstractHydrator implements
         if ($this->hasNamingStrategy()) {
             $name = $this->getNamingStrategy()->extract($name, $object);
         }
-
         return $name;
     }
 
@@ -179,7 +174,6 @@ abstract class AbstractHydrator implements
         if ($this->hasNamingStrategy()) {
             $name = $this->getNamingStrategy()->hydrate($name, $data);
         }
-
         return $name;
     }
 

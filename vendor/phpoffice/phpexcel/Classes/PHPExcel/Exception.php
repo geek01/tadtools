@@ -25,6 +25,7 @@
  * @version    ##VERSION##, ##DATE##
  */
 
+
 /**
  * PHPExcel_Exception
  *

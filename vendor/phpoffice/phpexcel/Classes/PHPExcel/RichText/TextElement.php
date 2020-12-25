@@ -62,7 +62,6 @@ class PHPExcel_RichText_TextElement implements PHPExcel_RichText_ITextElement
     public function setText($pText = '')
     {
         $this->text = $pText;
-
         return $this;
     }
 
