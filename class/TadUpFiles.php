@@ -1857,8 +1857,6 @@ class TadUpFiles
                     $all_files .= "<li>{$file_info['html_link']}</li>";
                 } elseif ($show_mode === 'file_text_url') {
                     $all_files .= "{$file_info['text_link']},";
-                } elseif ($show_mode === 'file_list') {
-                    $all_files .= "<li style='list-style: none'>({$i}) {$file_info['link']}</li>";
                 } else {
                     $linkto = $file_info['path'];
                     $description = empty($file_info['description']) ? $file_info['original_filename'] : $file_info['description'];
@@ -1915,20 +1913,16 @@ class TadUpFiles
                     $show_dl_txt = ($show_dl) ? "<span class='label label-info'>{$file_info['counter']}</span>" : '';
 
                     //描述顯示
-                    $show_description_txt = ($show_description) ? "<div style='font-weight: normal; font-size: 0.8em; word-break: break-all; line-height: 1.2; margin: 4px auto 4px 0px; text-align: left;'>({$i}) {$description} {$show_dl_txt}</div>" : (string) ($show_dl_txt);
+                    $show_description_txt = ($show_description) ? "<div style='font-weight: normal; font-size: 0.8em; word-break: break-all; line-height: 1.2; margin: 4px auto 4px 0px; text-align: left;'>{$i}) {$description} {$show_dl_txt}</div>" : (string) ($show_dl_txt);
 
                     $w = $this->show_width;
                     $h = $this->show_height;
                     $bgs = $this->background_size;
 
-                    /*$all_files .= ($show_mode === 'small') ? "<a href='{$linkto}' data-toggle='tooltip' data-placement='top' title='{$description}' class='iconize {$fancyboxset}' {$rel}>&nbsp;</a> " : "
+                    $all_files .= ($show_mode === 'small') ? "<a href='{$linkto}' data-toggle='tooltip' data-placement='top' title='{$description}' class='iconize {$fancyboxset}' {$rel}>&nbsp;</a> " : "
                     <li style='width:120px;height:180px;float:left;list-style:none;{$this->other_css}'>
                     <a href='{$linkto}' class='thumbnail {$fancyboxset}' {$rel} style=\"display:inline-block; width: $w; height: $h; overflow: hidden; {$thumb_css} background-image: url('{$thumb_pic}'); background-size: {$bgs}; background-repeat: no-repeat; background-position: center center; margin-bottom: 4px;\">&nbsp;</a>{$show_description_txt}
-                    </li>";*/
-                    $all_files .= ($show_mode == "small") ? "<a href='{$linkto}' data-toggle='tooltip' data-placement='top' title='{$description}' class='iconize {$fancyboxset}' {$rel}>&nbsp;</a> " : "
-                      <li style='width:80px;float:left;list-style:none;margin-right:10px;{$this->other_css}'>
-                        <a href='{$linkto}' class='thumbnail {$fancyboxset}' {$rel} download><img src='{$thumb_pic}' class='img-fluid img-thumbnail' style='max-width:100%'>{$show_description_txt}</a>
-                      </li>";
+                    </li>";
                 }
 
                 $i++;

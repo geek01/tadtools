@@ -4,13 +4,11 @@
  */
 
 CKEDITOR.editorConfig = function (config) {
-    config.pasteFromWordRemoveFontStyles = true;
-    config.pasteFromWordRemoveStyles = false;
-    config.indentOffset = 20;//縮排20px
+    config.pasteFromWordRemoveFontStyles = false;
     config.toolbar = 'my';
     config.toolbar_my =
         [
-            /*{ name: 'bar1', items: ['Source'] },
+            { name: 'bar1', items: ['Source'] },
             { name: 'bar2', items: ['Cut', 'Copy', 'Paste', 'PasteFromWord', 'Undo', 'Redo'] },
             { name: 'bar3', items: ['Image', 'oembed', 'EqnEditor', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'Link', 'Unlink'] },
             { name: 'bar4', items: ['NumberedList', 'BulletedList', 'RemoveFormat', 'Syntaxhighlight', 'CodeSnippet'] },
@@ -20,18 +18,10 @@ CKEDITOR.editorConfig = function (config) {
             { name: 'bar7-1', items: ['TextColor', 'BGColor', 'Bold', 'Italic', 'Underline', 'Strike'] },
             { name: 'bar8', items: ['Outdent', 'Indent'] },
             { name: 'bar9', items: ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'] },
-            { name: 'bar10', items: ['Find', 'Replace', 'SelectAll', 'FontAwesome'] }*/
-            { name: 'bar1', items : ['Source'] },
-            { name: 'bar1_1', items : ['Cut','Copy','Paste','PasteText','PasteFromWord','Undo','Redo'] },
-            { name: 'bar1_2', items : ['Image','oembed','Table','HorizontalRule','Link','Unlink'] },
-            { name: 'bar1_3', items : ['NumberedList','BulletedList','RemoveFormat','Syntaxhighlight'] },
-            '/',
-            { name: 'bar2', items : [ 'Format','Font','FontSize','TextColor','BGColor','Bold','Italic','Underline','Strike'] },
-            { name: 'bar2_1', items : [ 'JustifyLeft','JustifyCenter','JustifyRight','Outdent','Indent','Maximize','ShowBlocks'] }
+            { name: 'bar10', items: ['Find', 'Replace', 'SelectAll', 'FontAwesome'] }
         ];
 
     //CKEDITOR.config.autoGrow_maxHeight = 450;
-    CKEDITOR.config.font_names = 'Arial;Times New Roman;Verdana;標楷體';
     CKEDITOR.config.entities = false;
     CKEDITOR.config.htmlEncodeOutput = false;
     CKEDITOR.config.allowedContent = true;

@@ -1,4 +1,4 @@
-/* jshint node: true */
+﻿/* jshint node: true */
 var fs = require('fs');
 
 module.exports = function (grunt) {
