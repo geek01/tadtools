@@ -108,12 +108,12 @@ class CkEditor
         <script type='text/javascript'>
             {$demopublickey_js}
             CKEDITOR.replace('editor_{$this->ColName}' , {
-            skin : 'moono' ,
+            skin : 'bootstrapck' ,
             width : '{$this->Width}' ,
             height : '{$this->Height}' ,
             language : '" . _LANGCODE . "' ,
             toolbar : '{$this->ToolbarSet}' ,
-            contentsCss : ['" . XOOPS_URL . "/modules/tadtools/bootstrap{$bs}/css/bootstrap.css','" . XOOPS_URL . "/modules/tadtools/css/font-awesome/css/font-awesome.css'{$other_css}],
+            // contentsCss : ['" . XOOPS_URL . "/modules/tadtools/bootstrap{$bs}/css/bootstrap.css','" . XOOPS_URL . "/modules/tadtools/css/font-awesome/css/font-awesome.css'{$other_css}],
             extraPlugins: 'syntaxhighlight,dialog,oembed,eqneditor,quicktable,imagerotate,fakeobjects,widget,lineutils,widgetbootstrap,widgettemplatemenu,pagebreak,fontawesome,prism,codesnippet{$codemirror}{$extra_uploadcare}',
             {$uploadcare_setup}
             filebrowserBrowseUrl : '" . XOOPS_URL . '/modules/tadtools/elFinder/elfinder.php?type=file&mod_dir=' . $this->xoopsDirName . "',
@@ -133,7 +133,42 @@ class CkEditor
             qtPreviewBorder: '1px double black', // preview table border
             qtPreviewSize: '15px', // Preview table cell size
             qtPreviewBackground: '#c8def4' // preview table background (hover)
-            } );
+            });
+                CKEDITOR.on('instanceReady', function (ev) {
+                    ev.editor.dataProcessor.htmlFilter.addRules( {
+                        elements : {
+                            img: function( el ) {
+                                el.addClass('img-fluid');
+                                var style = el.attributes.style;
+                                if (style) {
+                                    // Get the width from the style.
+                                    var match = /(?:^|\s)width\s*:\s*(\d+)px/i.exec(style),
+                                        width = match && match[1];
+
+                                    // Get the height from the style.
+                                    match = /(?:^|\s)height\s*:\s*(\d+)px/i.exec(style);
+                                    var height = match && match[1];
+
+                                    // Replace the width
+                                    if (width) {
+                                        el.attributes.style = el.attributes.style.replace(/(?:^|\s)width\s*:\s*(\d+)px;?/i, '');
+                                        el.attributes.width = width;
+                                    }
+
+                                    // Replace the height
+                                    if (height) {
+                                        el.attributes.style = el.attributes.style.replace(/(?:^|\s)height\s*:\s*(\d+)px;?/i, '');
+                                        el.attributes.height = height;
+                                    }
+                                }
+
+                                // Remove the style tag if it is empty
+                                if (!el.attributes.style)
+                                    delete el.attributes.style;
+                            }
+                        }
+                    });
+                });
         </script>
         <script>CKEDITOR.dtd.\$removeEmpty['span'] = false;</script>
             ";

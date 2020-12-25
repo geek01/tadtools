@@ -26,6 +26,7 @@
  * @version    ##VERSION##, ##DATE##
  */
 
+
 /**
  * PHPExcel_Cell_IValueBinder
  *

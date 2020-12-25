@@ -48,6 +48,7 @@ class Theme extends AbstractPart
         return $str;
     }
 
+
     /**
      * Write color scheme
      *
