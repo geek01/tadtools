@@ -63,6 +63,12 @@ class CkEditor
         $this->demopublickey = $demopublickey;
     }
 
+    //設定上傳路徑
+    public function setSubdir($subdir = '')
+    {
+        $this->subdir = $subdir;
+    }
+
     //產生編輯器
     public function render()
     {
@@ -98,6 +104,8 @@ class CkEditor
                 },';
         }
 
+        $sub_dir = ($this->subdir) ? '&sub_dir=' . $this->subdir : '';
+
         $TadToolsModuleConfig = Utility::TadToolsXoopsModuleConfig();
         $codemirror = $TadToolsModuleConfig['use_codemirror'] ? ',codemirror' : '';
 
@@ -116,9 +124,9 @@ class CkEditor
             // contentsCss : ['" . XOOPS_URL . "/modules/tadtools/bootstrap{$bs}/css/bootstrap.css','" . XOOPS_URL . "/modules/tadtools/css/font-awesome/css/font-awesome.css'{$other_css}],
             extraPlugins: 'syntaxhighlight,dialog,oembed,eqneditor,quicktable,imagerotate,fakeobjects,widget,lineutils,widgetbootstrap,widgettemplatemenu,pagebreak,fontawesome,prism,codesnippet{$codemirror}{$extra_uploadcare}',
             {$uploadcare_setup}
-            filebrowserBrowseUrl : '" . XOOPS_URL . '/modules/tadtools/elFinder/elfinder.php?type=file&mod_dir=' . $this->xoopsDirName . "',
-            filebrowserImageBrowseUrl : '" . XOOPS_URL . '/modules/tadtools/elFinder/elfinder.php?type=image&mod_dir=' . $this->xoopsDirName . "',
-            filebrowserFlashBrowseUrl : '" . XOOPS_URL . '/modules/tadtools/elFinder/elfinder.php?type=flash&mod_dir=' . $this->xoopsDirName . "',
+            filebrowserBrowseUrl : '" . XOOPS_URL . '/modules/tadtools/elFinder/elfinder.php?type=file&mod_dir=' . $this->xoopsDirName . $sub_dir . "',
+            filebrowserImageBrowseUrl : '" . XOOPS_URL . '/modules/tadtools/elFinder/elfinder.php?type=image&mod_dir=' . $this->xoopsDirName . $sub_dir . "',
+            filebrowserFlashBrowseUrl : '" . XOOPS_URL . '/modules/tadtools/elFinder/elfinder.php?type=flash&mod_dir=' . $this->xoopsDirName . $sub_dir . "',
             // filebrowserUploadUrl : '" . XOOPS_URL . '/modules/tadtools/upload.php?type=file&mod_dir=' . $this->xoopsDirName . "',
             // filebrowserImageUploadUrl : '" . XOOPS_URL . '/modules/tadtools/upload.php?type=image&mod_dir=' . $this->xoopsDirName . "',
             // filebrowserFlashUploadUrl : '" . XOOPS_URL . '/modules/tadtools/upload.php?type=flash&mod_dir=' . $this->xoopsDirName . "',

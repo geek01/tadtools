@@ -14,6 +14,9 @@ $image_max_width = $xoopsModuleConfig['image_max_width'] ? (int) $xoopsModuleCon
 $image_max_height = $xoopsModuleConfig['image_max_height'] ? (int) $xoopsModuleConfig['image_max_height'] : 640;
 
 $type = Request::getString('type');
+//加入上傳路徑
+$sub_dir = Request::getString('sub_dir');
+$subdir = (empty($sub_dir)) ? '' : "{$sub_dir}/";
 
 error_reporting(0); // Set E_ALL for debuging
 
@@ -177,8 +180,8 @@ $opts = array(
         // Items volume
         array(
             'driver' => 'LocalFileSystem', // driver for accessing file system (REQUIRED)
-            'path' => XOOPS_ROOT_PATH . "/uploads/{$mdir}/{$type}/", // path to files (REQUIRED)
-            'URL' => XOOPS_URL . "/uploads/{$mdir}/{$type}/", // URL to files (REQUIRED),
+            'path' => XOOPS_ROOT_PATH . "/uploads/{$mdir}/{$subdir}{$type}/", // path to files (REQUIRED)
+            'URL' => XOOPS_URL . "/uploads/{$mdir}/{$subdir}{$type}/", // URL to files (REQUIRED),
             'plugin' => [
                 'AutoResize' => [
                     'enable' => true, // For control by volume driver

@@ -30,6 +30,23 @@ CKEDITOR.editorConfig = function (config) {
             { name: 'bar2_1', items : [ 'JustifyLeft','JustifyCenter','JustifyRight','Outdent','Indent','Maximize','ShowBlocks'] }
         ];
 
+    config.toolbar = 'tad_my';
+    config.toolbar_tad_my =
+    [
+      { name: 'bar1', items : ['Source'] },
+      { name: 'bar2', items : ['Cut','Copy','Paste','PasteFromWord','Undo','Redo'] },
+      { name: 'bar3', items : ['Image','oembed','Table','HorizontalRule','Link','Unlink'] },
+      { name: 'bar4', items : ['NumberedList','BulletedList','RemoveFormat'] },
+      { name: 'bar5', items : ['Blockquote', 'CreateDiv','ShowBlocks'] },
+      { name: 'bar6', items : ['WidgetTemplateMenu'] },
+      '/',
+      { name: 'bar7', items : ['Styles','Format','FontSize'] },
+      { name: 'bar7-1', items : ['TextColor','BGColor','Bold','Italic','Underline','Strike'] },
+      { name: 'bar8', items : ['Outdent','Indent'] },
+      { name: 'bar9', items : ['JustifyLeft','JustifyCenter','JustifyRight', 'JustifyBlock'] },
+      { name: 'bar10', items : ['Find', 'Replace',  'SelectAll','Maximize'] }
+    ];
+
     //CKEDITOR.config.autoGrow_maxHeight = 450;
     CKEDITOR.config.font_names = 'Arial;Times New Roman;Verdana;標楷體';
     CKEDITOR.config.entities = false;
